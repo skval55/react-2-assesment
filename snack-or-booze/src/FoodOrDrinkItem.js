@@ -2,10 +2,10 @@ import React from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
-function FoodItem({ items, cantFind }) {
+function FoodOrDrinkItem({ items, cantFind }) {
   const { id } = useParams();
 
-  let snack = items.find(snack => snack.id === id);
+  let snack = items.find((snack) => snack.id === id);
   if (!snack) return <Redirect to={cantFind} />;
 
   return (
@@ -28,4 +28,4 @@ function FoodItem({ items, cantFind }) {
   );
 }
 
-export default FoodItem;
+export default FoodOrDrinkItem;
