@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
 import Menu from "./Menu";
 import FoodOrDrinkitem from "./FoodOrDrinkItem";
+import AddItem from "./AddItem";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,17 +22,19 @@ function App() {
         let drinks = await SnackOrBoozeApi.getDrinks();
         setDrinks(drinks);
         setIsLoading(false);
-        console.log(drinks);
-        console.log(snacks);
-        console.log("**********************************");
-        console.log("**********************************");
-        console.log("**********************************");
       } catch (e) {
         console.error(e);
       }
     }
     fetchData();
   }, []);
+
+  const addDrink = (newDrink) => {
+    setDrinks([...drinks, newDrink]);
+  };
+  const addSnack = (newSnack) => {
+    setSnacks([...snacks, newSnack]);
+  };
 
   if (isLoading) {
     return <p>Loading &hellip;</p>;
@@ -45,6 +48,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home snacks={snacks} drinks={drinks} />
+            </Route>
+            <Route exact path="/additem">
+              <AddItem addSnack={addSnack} addDrink={addDrink} />
             </Route>
             <Route exact path="/snacks">
               <Menu isSnack={true} snackOrDrink={snacks} title="Snacks" />
