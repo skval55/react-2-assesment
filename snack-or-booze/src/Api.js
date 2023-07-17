@@ -14,14 +14,24 @@ class SnackOrBoozeApi {
     const result = await axios.get(`${BASE_API_URL}/snacks`);
     console.log("***************snacks****************");
     console.log(result.data);
-    return result.data;
+    const addedSnacks = localStorage.getItem("snacks");
+    if (addedSnacks != null) {
+      return [...result.data, ...JSON.parse(addedSnacks)];
+    } else {
+      return result.data;
+    }
   }
 
   static async getDrinks() {
     const result = await axios.get(`${BASE_API_URL}/drinks`);
     console.log("***************drinks****************");
     console.log(result.data);
-    return result.data;
+    const addedDrinks = localStorage.getItem("drinks");
+    if (addedDrinks != null) {
+      return [...result.data, ...JSON.parse(addedDrinks)];
+    } else {
+      return result.data;
+    }
   }
 }
 

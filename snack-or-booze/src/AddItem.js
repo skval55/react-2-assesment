@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+// import Button from "@material-ui/core/Button";
+import {
+  FormControl,
+  Button,
+  TextField,
+  FormLabel,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+} from "@material-ui/core";
+import "./AddItem.css";
 
 const AddItem = ({ addSnack, addDrink }) => {
   const INITIAL_STATE = {
@@ -27,22 +38,33 @@ const AddItem = ({ addSnack, addDrink }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (validateForm(formData)) {
       if (formData.snackOrDrink === "snack") {
         addSnack(formData);
         setFormData(INITIAL_STATE);
+        const addedSnacks = localStorage.getItem("snacks");
+        if (addedSnacks != null) {
+          localStorage.setItem(
+            "snacks",
+            JSON.stringify([...JSON.parse(addedSnacks), formData])
+          );
+        } else {
+          localStorage.setItem("snacks", JSON.stringify([formData]));
+        }
         history.push("/snacks");
       } else if (formData.snackOrDrink === "drink") {
         addDrink(formData);
         setFormData(INITIAL_STATE);
         const addedDrinks = localStorage.getItem("drinks");
-        console.log(addedDrinks);
-        localStorage.setItem(
-          "drinks",
-          JSON.stringify([...JSON.parse(addedDrinks), formData])
-        );
-        console.log(localStorage.getItem("drinks"));
+        if (addedDrinks != null) {
+          localStorage.setItem(
+            "drinks",
+            JSON.stringify([...JSON.parse(addedDrinks), formData])
+          );
+        } else {
+          localStorage.setItem("drinks", JSON.stringify([formData]));
+        }
         history.push("/drinks");
       }
     } else {
@@ -56,42 +78,70 @@ const AddItem = ({ addSnack, addDrink }) => {
       ...fData,
       [name]: value,
     }));
-    console.log(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {validated ? <p>Please fill every value</p> : null}
-      <p>Snack or Drink</p>
-      <input
-        type="radio"
-        id="snack"
-        name="snackOrDrink"
-        value="snack"
-        onChange={handleChange}
-      />
-      <label htmlFor="snack">Snack</label> <br />
-      <input
-        type="radio"
-        id="drink"
-        value="drink"
-        name="snackOrDrink"
-        onChange={handleChange}
-      />
-      <label htmlFor="drink">Drink</label> <br />
-      <label htmlFor="id">Id</label>
-      <input id="id" name="id" onChange={handleChange} /> <br />
-      <label htmlFor="name">Name</label>
-      <input id="name" name="name" onChange={handleChange} /> <br />
-      <label htmlFor="description">Description</label>
-      <input id="description" name="description" onChange={handleChange} />{" "}
-      <br />
-      <label htmlFor="recipe">Recipe</label>
-      <input id="recipe" name="recipe" onChange={handleChange} /> <br />
-      <label htmlFor="serve">How to Serve</label>
-      <input id="serve" name="serve" onChange={handleChange} /> <br />
-      <button>Add</button>
-    </form>
+    <div className="AddItem">
+      <FormControl
+        className="AddItem-form"
+        fullWidth={true}
+        onSubmit={handleSubmit}
+      >
+        {validated ? <p>Please fill every value</p> : null}
+        <FormLabel className="MuiFormLabel-root" component="legend">
+          Snack or Drink
+        </FormLabel>
+        <RadioGroup
+          aria-label="snackOrDrink"
+          name="snackOrDrink"
+          onChange={handleChange}
+        >
+          <FormControlLabel
+            value="snack"
+            control={<Radio color="default" />}
+            label="Snack"
+          />
+          <FormControlLabel
+            value="drink"
+            control={<Radio color="default" />}
+            label="Drink"
+          />
+        </RadioGroup>
+        <TextField label="Id" id="id" name="id" onChange={handleChange} />{" "}
+        <br />
+        <TextField
+          label="Name"
+          id="name"
+          name="name"
+          onChange={handleChange}
+        />{" "}
+        <br />
+        <TextField
+          label="Description"
+          id="description"
+          name="description"
+          onChange={handleChange}
+        />{" "}
+        <br />
+        <TextField
+          label="Recipe"
+          id="recipe"
+          name="recipe"
+          onChange={handleChange}
+        />{" "}
+        <br />
+        <TextField
+          label="How to serve"
+          id="serve"
+          name="serve"
+          onChange={handleChange}
+        />{" "}
+        <br />
+        <Button type="submit" onClick={() => handleSubmit()}>
+          Add
+        </Button>
+      </FormControl>
+    </div>
   );
 };
 

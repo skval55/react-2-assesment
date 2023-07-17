@@ -1,0 +1,30 @@
+.AddItem {
+    width: 75%;
+    max-width: 500px;
+    text-align: center;
+    padding: 10px;
+    background-color: #101010d1;
+    color: #f0f2f5;
+    border: 20px solid rgba(16, 16, 16, 0.63);
+    box-shadow: inset 0 0 0 2px #ffffff;
+    box-sizing: border-box;
+}
+
+.AddItem-form p{
+    color: rgb(155, 65, 65);
+}
+.AddItem-form legend{
+    color: rgb(168, 168, 168);
+}
+.AddItem-form legend:focus{
+    color: rgb(168, 168, 168);
+}
+.AddItem-form div label{
+    color: rgb(168, 168, 168);
+}
+.AddItem-form div input{
+    color: rgb(168, 168, 168);
+}
+.AddItem-form button{
+    color: rgb(168, 168, 168);
+}
