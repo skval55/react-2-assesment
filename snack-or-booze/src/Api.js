@@ -12,8 +12,8 @@ const BASE_API_URL = "http://localhost:5000";
 class SnackOrBoozeApi {
   static async getSnacks() {
     const result = await axios.get(`${BASE_API_URL}/snacks`);
-    console.log("***************snacks****************");
-    console.log(result.data);
+    // console.log("***************snacks****************");
+    // console.log(result.data);
     const addedSnacks = localStorage.getItem("snacks");
     if (addedSnacks != null) {
       return [...result.data, ...JSON.parse(addedSnacks)];
@@ -24,8 +24,8 @@ class SnackOrBoozeApi {
 
   static async getDrinks() {
     const result = await axios.get(`${BASE_API_URL}/drinks`);
-    console.log("***************drinks****************");
-    console.log(result.data);
+    // console.log("***************drinks****************");
+    // console.log(result.data);
     const addedDrinks = localStorage.getItem("drinks");
     if (addedDrinks != null) {
       return [...result.data, ...JSON.parse(addedDrinks)];

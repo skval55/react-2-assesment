@@ -10,21 +10,23 @@ function NavBar() {
         <NavLink exact to="/" className="navbar-brand">
           Snack or Booze
         </NavLink>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink to="/additem">Add Item</NavLink>
-          </NavItem>
-        </Nav>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink to="/snacks">Snacks</NavLink>
-          </NavItem>
-        </Nav>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink to="/drinks">drinks</NavLink>
-          </NavItem>
-        </Nav>
+        <div className="navItems">
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink to="/additem">Add Item</NavLink>
+            </NavItem>
+          </Nav>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink to="/snacks">Snacks</NavLink>
+            </NavItem>
+          </Nav>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink to="/drinks">drinks</NavLink>
+            </NavItem>
+          </Nav>
+        </div>
       </Navbar>
     </div>
   );

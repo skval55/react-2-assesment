@@ -7,6 +7,8 @@ main {
   height: calc(100vh - 56px); /* router view - navbar height */
   overflow: scroll;
   color: white;
+  background-image: url('https://www.rrgconsulting.com/mm5/graphics/00000001/restaurant%20background.jpg');
+  background-size: cover;
 }
 
 .card {

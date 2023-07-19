@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`see if it renders 1`] = `
+<DocumentFragment>
+  <div>
+    <nav
+      class="navbar navbar-expand-md"
+    >
+      <a
+        aria-current="page"
+        class="navbar-brand active"
+        href="/"
+      >
+        Snack or Booze
+      </a>
+      <div
+        class="navItems"
+      >
+        <ul
+          class="ml-auto navbar-nav"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              href="/additem"
+            >
+              Add Item
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="ml-auto navbar-nav"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              href="/snacks"
+            >
+              Snacks
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="ml-auto navbar-nav"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              href="/drinks"
+            >
+              drinks
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</DocumentFragment>
+`;

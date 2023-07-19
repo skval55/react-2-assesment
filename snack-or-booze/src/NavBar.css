@@ -8,6 +8,11 @@ nav {
   text-align: center;
 }
 
+.navItems {
+  display: flex;
+  justify-content: end;
+}
+
 nav a {
   color: #f0f2f5;
   text-decoration: none;
